@@ -11,12 +11,11 @@ def create_readme():
 
 def generate_readme_treeline(directory, depth):
     readme_treeline = ""
-    for path in os.listdir(directory):
+    for sub in os.listdir(directory):
         
-        full_path = f"{directory}/{path}"
-        print(full_path)
-        if os.path.isdir(full_path) and not path.endswith(("img", "git")):
-            readme_treeline += f"{'#' * depth} {path}\n"
+        full_path = f"{directory}/{sub}"
+        if os.path.isdir(full_path) and not sub.endswith(("img", "git")):
+            readme_treeline += f"{'#' * depth} {sub}\n"
             readme_treeline += generate_readme_treeline(full_path, depth + 1)
         elif os.path.isfile(full_path):
             file_name = os.path.basename(full_path)

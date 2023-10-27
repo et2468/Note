@@ -181,4 +181,6 @@
 - [9. @Configuration과 싱글톤.md](./Note-Springboot/%EC%8A%A4%ED%94%84%EB%A7%81%EC%9D%98%20%ED%95%B5%EC%8B%AC%20%EC%9B%90%EB%A6%AC/9.%20%40Configuration%EA%B3%BC%20%EC%8B%B1%EA%B8%80%ED%86%A4.md)
 - [README.md](./README.md)
 ## utils
-- [check_files.py](./utils/check_files.py)
+- [delete_wrong_source.py](./utils/delete_wrong_source.py)
+- [insert_source.py](./utils/insert_source.py)
+- [make_readme.py](./utils/make_readme.py)

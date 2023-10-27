@@ -3,7 +3,7 @@ from urllib.parse import quote
 
 def create_readme():
     readme_startline = "# 개발 공부를 기록한 통합 레파지토리입니다.\n\n"
-    readme_treeline = generate_readme_treeline("./", 2)
+    readme_treeline = generate_readme_treeline(".", 2)
     readme = readme_startline + readme_treeline
 
     with open("./README.md", 'w', encoding='utf-8') as f:
@@ -12,7 +12,9 @@ def create_readme():
 def generate_readme_treeline(directory, depth):
     readme_treeline = ""
     for path in os.listdir(directory):
-        full_path = os.path.join(directory, path)
+        
+        full_path = f"{directory}/{path}"
+        print(full_path)
         if os.path.isdir(full_path) and not path.endswith(("img", "git")):
             readme_treeline += f"{'#' * depth} {path}\n"
             readme_treeline += generate_readme_treeline(full_path, depth + 1)

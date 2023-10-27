@@ -1,4 +1,5 @@
 import os
+from urllib.parse import quote
 
 def create_readme():
     readme_startline = "# 개발 공부를 기록한 통합 레파지토리입니다.\n\n"
@@ -17,7 +18,8 @@ def generate_readme_treeline(directory, depth):
             readme_treeline += generate_readme_treeline(full_path, depth + 1)
         elif os.path.isfile(full_path):
             file_name = os.path.basename(full_path)
-            readme_treeline += f"- [{file_name}]({full_path})\n"
+            encoded_file_name = quote(full_path)
+            readme_treeline += f"- [{file_name}]({encoded_file_name})\n"
     return readme_treeline
 
 if __name__ == "__main__":

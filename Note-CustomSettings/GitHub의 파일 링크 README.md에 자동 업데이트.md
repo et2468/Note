@@ -12,35 +12,39 @@
 
 
 
-**최종코드와 결과물**
+**최종코드**
 
 ```python
 import os
 from urllib.parse import quote
 
-def create_readme(output_file_path="./README.md"):
-    readme_startline = "# 개발 공부를 기록한 통합 레파지토리입니다\n\n"
+def create_readme():
+    readme_startline = "# 개발 공부를 기록한 통합 레파지토리입니다.\n\n"
     readme_treeline = generate_readme_treeline(".", 2)
     readme = readme_startline + readme_treeline
 
-    with open(output_file_path, 'w', encoding='utf-8') as f:
+    with open("./README.md", 'w', encoding='utf-8') as f:
         f.write(readme)
 
 def generate_readme_treeline(directory, depth):
     readme_treeline = ""
-    for sub in sorted(os.listdir(directory)):
+    for sub in os.listdir(directory):
         full_path = f"{directory}/{sub}"
         if os.path.isdir(full_path) and not sub.endswith(("img", "git")):
             readme_treeline += f"{'#' * depth} {sub}\n"
             readme_treeline += generate_readme_treeline(full_path, depth + 1)
         elif os.path.isfile(full_path):
-            encoded_file_name = quote(sub)
+            encoded_file_name = quote(full_path)
             readme_treeline += f"- [{sub}]({encoded_file_name})\n"
     return readme_treeline
 
 if __name__ == "__main__":
     create_readme()
 ```
+
+
+
+**결과물**
 
 [README.md 자동생성 코드를 적용한 레파지토리 링크](https://github.com/et2468/Note/tree/master#%EA%B0%9C%EB%B0%9C-%EA%B3%B5%EB%B6%80%EB%A5%BC-%EA%B8%B0%EB%A1%9D%ED%95%9C-%ED%86%B5%ED%95%A9-%EB%A0%88%ED%8C%8C%EC%A7%80%ED%86%A0%EB%A6%AC%EC%9E%85%EB%8B%88%EB%8B%A4)
 
@@ -103,7 +107,9 @@ if __name__ == "__main__":
 
 2. Github에선 md파일의 링크문법 `[제목](링크)`에 링크에 띄워쓰기가 있으면 작동하지 않는다.
 
-- 이를 위해 링크형식을 
+- 이를 위해 링크형식을 인코딩해주어 띄어쓰기를 %20으로 바꾼다.
+- `from urllib.parse import quote`은 문자열을 URL로 인코딩해주는 함수이다.
+- 이때, 영어와 숫자는 인코딩이 안되는 것을 확인했는데, 이들은 URL에서 사용할 수 있는 문자로 간주되어 `quote`함수가 인코딩하지 않는 듯하다.
 
 
 

@@ -18,9 +18,8 @@ def generate_readme_treeline(directory, depth):
             readme_treeline += f"{'#' * depth} {sub}\n"
             readme_treeline += generate_readme_treeline(full_path, depth + 1)
         elif os.path.isfile(full_path):
-            file_name = os.path.basename(full_path)
             encoded_file_name = quote(full_path)
-            readme_treeline += f"- [{file_name}]({encoded_file_name})\n"
+            readme_treeline += f"- [{sub}]({encoded_file_name})\n"
     return readme_treeline
 
 if __name__ == "__main__":

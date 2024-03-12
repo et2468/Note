@@ -1,6 +1,6 @@
 # 개발 공부를 기록한 통합 레파지토리입니다.
 
-목차는 다음의 프로그램을 제작하여 생성하였습니다.
+목차는 다음의 프로그램을 제작하여 생성하였습니다. <br/>
 [목차생성 알고리즘](https://github.com/et2468/Note-Programming/blob/master/Note-CustomSettings/GitHub%EC%9D%98%20%ED%8C%8C%EC%9D%BC%20%EB%A7%81%ED%81%AC%20README.md%EC%97%90%20%EC%9E%90%EB%8F%99%20%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8.md)
 
 ## Note-ComputerArchitecture
